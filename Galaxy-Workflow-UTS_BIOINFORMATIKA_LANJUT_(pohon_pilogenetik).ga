@@ -1,0 +1,132 @@
+{
+    "a_galaxy_workflow": "true",
+    "annotation": "",
+    "format-version": "0.1",
+    "name": "UTS BIOINFORMATIKA LANJUT (pohon pilogenetik)",
+    "steps": {
+        "0": {
+            "annotation": "",
+            "content_id": null,
+            "errors": null,
+            "id": 0,
+            "input_connections": {},
+            "inputs": [
+                {
+                    "description": "",
+                    "name": "SNP_alignment.fasta"
+                }
+            ],
+            "label": "SNP_alignment.fasta",
+            "name": "Input dataset",
+            "outputs": [],
+            "position": {
+                "left": 0,
+                "top": 0
+            },
+            "tool_id": null,
+            "tool_state": "{\"optional\": false, \"tag\": null}",
+            "tool_version": null,
+            "type": "data_input",
+            "uuid": "eb77f34f-5a1e-4cb5-8702-d2ef28236345",
+            "when": null,
+            "workflow_outputs": []
+        },
+        "1": {
+            "annotation": "",
+            "content_id": "toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_replace_in_line/1.1.2",
+            "errors": null,
+            "id": 1,
+            "input_connections": {
+                "infile": {
+                    "id": 0,
+                    "output_name": "output"
+                }
+            },
+            "inputs": [],
+            "label": null,
+            "name": "Replace Text",
+            "outputs": [
+                {
+                    "name": "outfile",
+                    "type": "input"
+                }
+            ],
+            "position": {
+                "left": 220,
+                "top": 0
+            },
+            "post_job_actions": {},
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_replace_in_line/1.1.2",
+            "tool_shed_repository": {
+                "changeset_revision": "ddf54b12c295",
+                "name": "text_processing",
+                "owner": "bgruening",
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            },
+            "tool_state": "{\"__input_ext\": \"fasta\", \"chromInfo\": \"/cvmfs/data.galaxyproject.org/managed/len/ucsc/?.len\", \"infile\": {\"__class__\": \"ConnectedValue\"}, \"replacements\": [{\"__index__\": 0, \"find_pattern\": \"^(>.+)\\\\.fastq.*\", \"replace_pattern\": \"\\\\1\"}], \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "1.1.2",
+            "type": "tool",
+            "uuid": "a0f6a606-3d17-4866-bbb9-2fb85dc7bc8e",
+            "when": null,
+            "workflow_outputs": []
+        },
+        "2": {
+            "annotation": "",
+            "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/raxml/raxml/8.2.12+galaxy0",
+            "errors": null,
+            "id": 2,
+            "input_connections": {
+                "infile": {
+                    "id": 1,
+                    "output_name": "outfile"
+                }
+            },
+            "inputs": [],
+            "label": null,
+            "name": "Phyogenetic reconstruction with RAxML",
+            "outputs": [
+                {
+                    "name": "info",
+                    "type": "txt"
+                },
+                {
+                    "name": "logReq",
+                    "type": "txt"
+                },
+                {
+                    "name": "parsimonyTreeReq",
+                    "type": "nhx"
+                },
+                {
+                    "name": "resultReq",
+                    "type": "nhx"
+                },
+                {
+                    "name": "bestTree",
+                    "type": "nhx"
+                }
+            ],
+            "position": {
+                "left": 440,
+                "top": 0
+            },
+            "post_job_actions": {},
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/raxml/raxml/8.2.12+galaxy0",
+            "tool_shed_repository": {
+                "changeset_revision": "ea30d3089354",
+                "name": "raxml",
+                "owner": "iuc",
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            },
+            "tool_state": "{\"__input_ext\": \"fasta\", \"chromInfo\": \"/cvmfs/data.galaxyproject.org/managed/len/ucsc/?.len\", \"infile\": {\"__class__\": \"ConnectedValue\"}, \"random_seed\": \"1234567890\", \"search_model_selector\": {\"model_type\": \"nucleotide\", \"__current_case__\": 0, \"base_model\": \"GTRGAMMA\"}, \"selExtraOpts\": {\"extraOptions\": \"required\", \"__current_case__\": 0}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "8.2.12+galaxy0",
+            "type": "tool",
+            "uuid": "0506ef02-a646-463c-9ebe-e0924f12381e",
+            "when": null,
+            "workflow_outputs": []
+        }
+    },
+    "tags": [],
+    "uuid": "eb233f48-c36a-4a26-8c0b-c74e0f6b44fe",
+    "version": 1
+}
